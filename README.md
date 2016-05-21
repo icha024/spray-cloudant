@@ -3,7 +3,7 @@
 ## Motivation
 Most Cloudant/CouchDB libraries I've came across are overly complicated, and require a bit of a learning curve to use. The other problem I had was unmarshalling response that mismatched my expected JSON object, debugging those and doing exception handling was not a very pleasant experience. Since I'm using Spray, and Cloudant already provide a HTTP API, I've decided to create a simple Cloudant client to overcome those pain points.
  
- **About 120 lines of Scala later, here is it.**
+ **About 200 lines of Scala later, here is it.**
 
 #### Features
 - **CRUD** for Database/Document/Bulk/Index/Views and **Search** Index/View method are provided.

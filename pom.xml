@@ -6,10 +6,9 @@
 	<artifactId>spray-cloudant_2.11</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>spray-cloudant</name>
+	<description>Scala Cloudant client for Spray</description>
 	<url>http://www.clianz.com/</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<scala.version>2.11.7</scala.version>
@@ -17,7 +16,28 @@
 		<spray.version>1.3.2</spray.version>
 		<spray.json.shapeless.version>1.2.0</spray.json.shapeless.version>
 	</properties>
-
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<!-- including A developer as it's required by the maven poms going into central -->
+	<developers>
+		<developer>
+			<id>geeks</id>
+			<name>Development Team</name>
+			<organization>clianz</organization>
+			<organizationUrl>http://clianz.com/</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git@github.com:icha024/spray-cloudant.git</connection>
+		<developerConnection>scm:git:git@github.com:icha024/spray-cloudant.git</developerConnection>
+		<url>http://github.com/icha024/spray-cloudant</url>
+		<tag>HEAD</tag>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>org.scala-lang</groupId>
@@ -64,5 +84,64 @@
 			</plugin>
 		</plugins>
 	</build>
-</project>
 
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+</project>
