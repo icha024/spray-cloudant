@@ -1,7 +1,42 @@
 # Scala Cloudant client for Spray/Akka
 
+## Motivation
+Most Cloudant/CouchDB libraries I've came across are overly complicated, and require a bit of a learning curve to use. The other problem I had was unmarshalling response that mismatched my expected JSON object, debugging those and doing exception handling was not a very pleasant experience. Since I'm using Spray, and Cloudant already provide a HTTP API, I've decided to create a simple Cloudant client to overcome those pain points.
+ 
+ **About 120 lines of Scala later, here is it.**
+
+#### Features
+- **CRUD** for Database/Document/Bulk/Index/Views and **Search** Index/View method are provided.
+- Everything returns a **Future[String] by default**, this is the raw JSON response from Cloudant.
+- Unmarshalling is optional, with a **.unmarshalTo[T] convenience method** provided.
+- Exceptions (CloudantException) will come through **the usual Future.failed** channel.
+
+## Example
+
+```scala
+trait LocatorService extends Actor with CloudantOps {
+      implicit val dbName  = "myDB"
+      implicit val cloudantCred = new CloudantCredential(username, password)
+      
+      // Create doc via JSON directly
+      val doc = """{"food": "Pizza"}"""
+      val response1: Future[String] = createOrUpdateDoc(doc)
+      
+      // Create doc via object
+      case class MyFood(food: String)
+      val myFood = MyFood("Pizza")
+      val response2: Future[String] = createOrUpdateDoc[MyFood](myFood)
+      
+      // Create doc via object, then unmarshall the response
+      val response3: Future[MyResponseType] = createOrUpdateDoc[MyFood](myFood).unmarshalTo[MyResponseType]
+}
+```
+
+The best documentation is the code itself, take a look, it'll only take 2 minutes to glance through and figure it out.
 
 ## Transitive Dependencies
+
+This library depends on Spray/Akka, and uses the Shapeless library.
 
 ```
 com.clianz:spray-cloudant_2.11:jar:0.1-SNAPSHOT
@@ -29,9 +64,10 @@ com.clianz:spray-cloudant_2.11:jar:0.1-SNAPSHOT
       \- org.typelevel:macro-compat_2.11:jar:1.1.1:compile
 ```
 
+#### Spray-routing version
 As (mentioned in the official Spray documentation)[http://spray.io/project-info/current-versions/#shapeless-versions], **if you are using Spray-routing, then you need the version built for shapeless**.
  
-This library has been tested with:
+This library was tested with:
 ```
 io.spray:spray-routing-shapeless2_2.11:jar:1.3.2
 ```
