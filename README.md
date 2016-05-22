@@ -36,6 +36,7 @@ The best documentation is the [code itself](https://github.com/icha024/spray-clo
 
 ## Installing the client
 Check Maven Central for the latest published version.
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.clianz/spray-cloudant_2.11.svg)](http://search.maven.org/#search%7Cga%7C1%7Cspray-cloudant)
 
 ### Maven
