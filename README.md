@@ -11,7 +11,7 @@ Most Cloudant/CouchDB libraries I've came across are overly complicated, and req
 - Unmarshalling is optional, with a **.unmarshalTo[T] convenience method** provided.
 - Exceptions (CloudantException) will come through **the usual Future.failed** channel.
 
-## Usage
+## Usage Example
 
 ```scala
 class LocatorService extends Actor with CloudantOps {
@@ -19,6 +19,7 @@ class LocatorService extends Actor with CloudantOps {
       implicit val cloudantCred = new CloudantCredential(username, password)
       
       // Create doc via JSON directly
+      // Notice _id and _rev field is omitted, this will create a new document.
       val doc = """{"food": "Pizza"}"""
       val response1: Future[String] = createOrUpdateDoc(doc)
       
@@ -32,7 +33,31 @@ class LocatorService extends Actor with CloudantOps {
 }
 ```
 
-The best documentation is the [code itself](https://github.com/icha024/spray-cloudant/blob/master/src/main/scala/com/clianz/cloudant/CloudantOps.scala), it'll only take 2 minutes to glance through the API.
+The best documentation is the [code itself](https://github.com/icha024/spray-cloudant/blob/master/src/main/scala/com/clianz/cloudant/CloudantOps.scala), it'll only take 2 minutes to glance through the code.
+
+### Client API Available
+##### DB CRUD Operations
+- createDb
+- retrieveDb
+- retrieveAllDbs
+- deleteDb
+
+##### Doc CRUD Operations
+- createOrUpdateDoc
+- createOrUpdateOrDeleteBulkDoc
+- retrieveDoc
+- deleteDoc
+
+##### Index/View Operations
+- createOrUpdateIndex
+- createOrUpdateView
+- searchIndex
+- searchView
+
+#### Unsupported Operations
+- Retrieve all doc on a DB
+- Retrieve DB changes
+- Querying view by composite key 
 
 ## Installing the client
 Check Maven Central for the latest published version.
