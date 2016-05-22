@@ -1,8 +1,9 @@
 # Scala Cloudant client for Spray/Akka
+[![Maven Central](https://img.shields.io/maven-central/v/com.clianz/spray-cloudant_2.11.svg)](http://search.maven.org/#search%7Cga%7C1%7Cspray-cloudant)
 
 ## Motivation
 Most Cloudant/CouchDB libraries I've came across are overly complicated, and require a bit of a learning curve to use. The other problem I had was unmarshalling response that mismatched my expected JSON object, debugging those and doing exception handling was not a very pleasant experience. Since I'm using Spray, and Cloudant already provide a HTTP API, I've decided to create a simple Cloudant client to overcome those pain points.
- 
+
  **About 200 lines of Scala later, here is it.**
 
 #### Features
@@ -11,7 +12,7 @@ Most Cloudant/CouchDB libraries I've came across are overly complicated, and req
 - Unmarshalling is optional, with a **.unmarshalTo[T] convenience method** provided.
 - Exceptions (CloudantException) will come through **the usual Future.failed** channel.
 
-## Example
+## Usage
 
 ```scala
 class LocatorService extends Actor with CloudantOps {
@@ -34,7 +35,26 @@ class LocatorService extends Actor with CloudantOps {
 
 The best documentation is the code itself, take a look, it'll only take 2 minutes to glance through and figure it out.
 
-## Transitive Dependencies
+## Installing the client
+Check Maven Central for the latest published version.
+
+### Maven
+
+```xml
+<dependency>
+    <groupId>com.clianz</groupId>
+    <artifactId>spray-cloudant_2.11</artifactId>
+    <version>0.1.3</version>
+</dependency>
+```
+
+###
+
+```
+libraryDependencies += "com.clianz" % "spray-cloudant_2.11" % "0.1.3"
+```
+
+### Transitive Dependencies
 
 This library depends on Spray/Akka, and uses the Shapeless library.
 
