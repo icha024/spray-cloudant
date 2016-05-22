@@ -14,7 +14,7 @@ Most Cloudant/CouchDB libraries I've came across are overly complicated, and req
 ## Usage Example
 
 ```scala
-class LocatorService extends Actor with CloudantOps {
+class FoodService extends Actor with CloudantOps {
       implicit val dbName  = "myDB"
       implicit val cloudantCred = new CloudantCredential(username, password)
       
