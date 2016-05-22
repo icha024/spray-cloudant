@@ -32,7 +32,7 @@ class LocatorService extends Actor with CloudantOps {
 }
 ```
 
-The best documentation is the [https://github.com/icha024/spray-cloudant/blob/master/src/main/scala/com/clianz/cloudant/CloudantOps.scala](code itself), it'll only take 2 minutes to glance through and figure it out.
+The best documentation is the [code itself](https://github.com/icha024/spray-cloudant/blob/master/src/main/scala/com/clianz/cloudant/CloudantOps.scala), it'll only take 2 minutes to glance through the API.
 
 ## Installing the client
 Check Maven Central for the latest published version.
@@ -85,7 +85,7 @@ com.clianz:spray-cloudant_2.11:jar:0.1-SNAPSHOT
 ```
 
 #### Spray-routing version
-As [http://spray.io/project-info/current-versions/#shapeless-versions](mentioned in the official Spray documentation), **if you are using Spray-routing, then you need the version built for shapeless**.
+As [mentioned in the official Spray documentation](http://spray.io/project-info/current-versions/#shapeless-versions), **if you are using Spray-routing, then you need the version built for shapeless**.
  
 This library was tested with:
 ```
