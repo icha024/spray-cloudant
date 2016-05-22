@@ -1,5 +1,4 @@
 # Scala Cloudant client for Spray/Akka
-[![Maven Central](https://img.shields.io/maven-central/v/com.clianz/spray-cloudant_2.11.svg)](http://search.maven.org/#search%7Cga%7C1%7Cspray-cloudant)
 
 ## Motivation
 Most Cloudant/CouchDB libraries I've came across are overly complicated, and require a bit of a learning curve to use. The other problem I had was unmarshalling response that mismatched my expected JSON object, debugging those and doing exception handling was not a very pleasant experience. Since I'm using Spray, and Cloudant already provide a HTTP API, I've decided to create a simple Cloudant client to overcome those pain points.
@@ -33,10 +32,11 @@ class LocatorService extends Actor with CloudantOps {
 }
 ```
 
-The best documentation is the code itself, take a look, it'll only take 2 minutes to glance through and figure it out.
+The best documentation is the [https://github.com/icha024/spray-cloudant/blob/master/src/main/scala/com/clianz/cloudant/CloudantOps.scala](code itself), it'll only take 2 minutes to glance through and figure it out.
 
 ## Installing the client
 Check Maven Central for the latest published version.
+[![Maven Central](https://img.shields.io/maven-central/v/com.clianz/spray-cloudant_2.11.svg)](http://search.maven.org/#search%7Cga%7C1%7Cspray-cloudant)
 
 ### Maven
 
@@ -48,9 +48,9 @@ Check Maven Central for the latest published version.
 </dependency>
 ```
 
-###
+### SBT
 
-```
+```properties
 libraryDependencies += "com.clianz" % "spray-cloudant_2.11" % "0.1.3"
 ```
 
@@ -85,7 +85,7 @@ com.clianz:spray-cloudant_2.11:jar:0.1-SNAPSHOT
 ```
 
 #### Spray-routing version
-As (mentioned in the official Spray documentation)[http://spray.io/project-info/current-versions/#shapeless-versions], **if you are using Spray-routing, then you need the version built for shapeless**.
+As [http://spray.io/project-info/current-versions/#shapeless-versions](mentioned in the official Spray documentation), **if you are using Spray-routing, then you need the version built for shapeless**.
  
 This library was tested with:
 ```
