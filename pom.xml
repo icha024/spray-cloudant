@@ -3,7 +3,7 @@
 
 	<groupId>com.clianz</groupId>
 	<artifactId>spray-cloudant_2.11</artifactId>
-	<version>0.1.3</version>
+	<version>0.1.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>spray-cloudant</name>
 	<description>Scala Cloudant client for Spray</description>
