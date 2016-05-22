@@ -1,7 +1,8 @@
 # Scala Cloudant client for Spray/Akka
+[![Build Status](https://travis-ci.org/icha024/spray-cloudant.svg?branch=master)](https://travis-ci.org/icha024/spray-cloudant)
 
 ## Motivation
-Most Cloudant/CouchDB libraries I've came across are overly complicated, and require a bit of a learning curve to use. Error handling and debugging response unmarshalling error wasn't very pleasant. They do have some really nice and advanced features, but I didn't really require them. Since I'm using Spray, and Cloudant already provide a HTTP API, it was fairly straight forward to create a new client.
+*Why another library?* Most of the Cloudant/CouchDB libraries I've came across are overly complicated, and require a bit of a learning curve to use. Error handling and debugging response unmarshalling error wasn't very pleasant. They do have some really nice and advanced features, but I didn't really require them. Since I'm using Spray, and Cloudant already provide a HTTP API, it was fairly straight forward to create a new client library.
 
  **About 200 lines of Scala later, here is it.**
 
