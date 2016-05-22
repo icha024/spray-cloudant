@@ -13,10 +13,13 @@ Most Cloudant/CouchDB libraries I've came across are overly complicated, and req
 
 ## Usage Example
 
+Just extend the CloudantOps trait and the cloudant operations will be available.
+
 ```scala
 class FoodService extends Actor with CloudantOps {
-      implicit val dbName  = "myDB"
+      // Alternatively: CloudantCredential(username, accountname, password)
       implicit val cloudantCred = new CloudantCredential(username, password)
+      implicit val dbName  = "myDB"
       
       // Create doc via JSON directly
       // Notice _id and _rev field is omitted, this will create a new document.
